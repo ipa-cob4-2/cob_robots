@@ -200,6 +200,20 @@
 		</include-->
 	</group>
 
+	<group>
+		<machine name="cob4-2-s1" address="$(arg cob4-2-s1)" env-loader="$(find cob_bringup)/env.sh" default="true" timeout="30"/>
+		<!-- pc monitor -->
+		<include file="$(find cob_bringup)/tools/pc_monitor.launch" >
+			<arg name="robot" value="$(arg robot)" />
+			<arg name="pc" value="$(arg cob4-2-s1)" />
+		</include>
+
+		<include file="$(find sick_3dcs)/launch/sick_3dcs_pc.launch" >
+			<arg name="camera" value="sensorring_cam3d" />
+			<arg name="frame_id" value="sensorring_cam3d_link"/>
+		</include>
+
+	</group>
 
 	<group>
 		<machine name="cob4-2-h1" address="$(arg cob4-2-h1)" env-loader="$(find cob_bringup)/env.sh" default="true" timeout="30"/>
